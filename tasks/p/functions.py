@@ -3,21 +3,37 @@ from typing import Callable
 
 # RECURSION
 
-def rprint(array: list, max_depth: int = -1):
-    """
-    Функция принимает массив со вложенными массивами и выводит его с точностью
-    до глубины max_depth, заменяя все более глубокие элементы на '...'
-    """
+def rprint(array: list, max_depth: int):
+    if max_depth <= 0:
+        return '[...]'
+    s = '['
+    for i in range(len(array)):
+        elem = array[i]
+        if type(elem) is list:
+            s += rprint(elem, max_depth - 1)
+        else:
+            s += str(elem)
+        if i != len(array) - 1:
+            s += ', '
+    s += ']'
+    return s
 
-    def _worker(obj, depth: int):
-        ...
 
     print(_worker(array, 0))
 
 
 # ARGS, KWARGS
 
-def median(*args, low: bool = True):
+def median(*args: int, low: bool = True):
+    lst = list(args)
+    lst.sort()
+    # print(lst)
+    n = len(lst)
+    if n % 2 != 0:
+        return lst[(n - 1) // 2]
+    if low:
+        return lst[(n // 2) - 1]
+    return lst[(n // 2)]
     """
     Функция принимает произвольное число аргументов и возвращает медиану
     (если low = True, то при четном числе элементов возвращается меньшая из
@@ -54,7 +70,12 @@ def twice(f: Callable):
     ...
 
 
-def logging(f: Callable):
+def logging(f0: Callable):
+    def g0(*args, **kwargs):
+        print(args, kwargs)
+        return f0(*args, **kwargs)
+
+    return g0
     """
     Функция принимает другую функцию от произвольного набора аргументов f и
     возвращает новую функцию, которая копирует поведение f, но перед каждым
