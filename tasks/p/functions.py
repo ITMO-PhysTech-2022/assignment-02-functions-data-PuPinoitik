@@ -43,6 +43,16 @@ def median(*args: int, low: bool = True):
 
 
 def sequential_replace(s: str, **kwargs: dict[str, str]):
+    c=[]
+    d=[]
+    for key,value in kwargs.items():
+        c.append(key)
+        d.append(value)
+    e=s.split()
+    for i in range(len(c)):
+        if c[i] in s:
+            s=s.replace(c[i],d[i],1)
+    return s
     """
     Функция принимает строку s и набор аргументов вида key=value и возвращает
     строку s, в которой все вхождения подстрок key заменены на подстроки value

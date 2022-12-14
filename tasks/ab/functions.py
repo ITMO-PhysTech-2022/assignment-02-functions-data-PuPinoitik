@@ -15,18 +15,19 @@ def useless_function():
     return UserWarning
 
 
-def print_tree(size: int):
-    """
-    Функция выводит елочку из size сегментов размерами от 1 до size
-    """
+def print_tree(size:int):
+    for i in range(1,size+1):
+        print(_print_segment(i,size))
 
-    def _print_segment(height: int):
-        """
-        Функция выводит сегмент елочки размера height
-        """
-        ...
-
-    ...
+def _print_segment(height: int,size: int):
+    s=''
+    for i in range(0,height):
+        s+=(' '*(size-height))
+        s+=(' '*(height-i-1))
+        s+='*'+'*'*2*i
+        if i!=height-1:
+            s+='\n'
+    return s
 
 
 # RECURSION
@@ -60,6 +61,10 @@ def wtf():
 # ARGS, KWARGS
 
 def mex(*args):
+    s=args
+    for i in range(len(s)):
+        if i not in s:
+            return i
     """
     Функция принимает произвольное число аргументов и возвращает их mex,
     то есть minimal excluded - минимальное целое неотрицательное число,
@@ -79,7 +84,13 @@ def replace_keys(data: dict[str, Any], **kwargs: str):
 
 # HIGH ORDER
 
-def count_calls_until(f: Callable, start, condition: Callable[..., bool]):
+def count_calls_until(f, start, condition):
+    x=start
+    k=0
+    while condition(x)!=True:
+        x=f(x)
+        k+=1
+    return k
     """
     Функция принимает другую функцию от одного аргумента f, начальное значение
     и условие остановки, и возвращает количество последовательных вызовов f от

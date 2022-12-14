@@ -9,7 +9,13 @@ def wordcount(s: str):
     ...
 
 
-def caesar_encode(s: str, shift: int):
+def ceasar_encode(letter, shift):
+    if letter.isalpha():
+        number = ord(letter) + shift % 25
+        if number  > 122 or 90 < number < 97:
+            number -= 25
+        return chr(number)
+    return letter
     """
     Функция принимает строку s и величину сдвига shift и возвращает результат
     применения шифра Цезаря к строке, со сдвигом на shift влево
