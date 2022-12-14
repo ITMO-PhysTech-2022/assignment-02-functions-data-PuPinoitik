@@ -55,16 +55,19 @@ def wtf():
         else:
             return 0
 
-    return _worker(...)
+    return _worker((7*(3**41)))
 
 
 # ARGS, KWARGS
 
 def mex(*args):
-    s=args
-    for i in range(len(s)):
-        if i not in s:
-            return i
+    if args==():
+        return args
+    else:
+        s=args
+        for i in range(len(s)):
+            if i not in s:
+                return i
     """
     Функция принимает произвольное число аргументов и возвращает их mex,
     то есть minimal excluded - минимальное целое неотрицательное число,
