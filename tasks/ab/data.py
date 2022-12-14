@@ -43,6 +43,18 @@ def extract_each(array: list, k: int, cyclic: bool = False):
 # SETS
 
 def compare(s1: set[int], s2: set[int]):
+    k=100000000000
+    n=100000000000
+    for i in range(len(s1)):
+        if k>s1[i]:
+            k=s1[i]
+    for i in range(len(s2)):
+        if n>s2[i]:
+            n=s2[i]
+    if k<n:
+        return True
+    else:
+        return False
     """
     Функция принимает два множества чисел и возвращает результат их сравнения -
     меньшим считается то множество, в котором лежит наименьший из их не-общих
