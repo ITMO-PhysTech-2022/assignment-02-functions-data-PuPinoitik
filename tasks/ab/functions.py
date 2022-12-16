@@ -40,11 +40,6 @@ def generate_json(depth: int):
 
 
 def wtf():
-    """
-    Функция wtf вызывает внутреннюю функцию _worker с некоторым аргументом
-    и должна возвращать число 42
-    """
-
     def _worker(x):
         if x == 0:
             return wtf()
@@ -54,7 +49,6 @@ def wtf():
             return _worker(x + 982 if x < 10000 else x - 2) + 1
         else:
             return 0
-
     return _worker((7*(3**41)))
 
 
@@ -62,10 +56,10 @@ def wtf():
 
 def mex(*args):
     if args==():
-        return args
+        return 0
     else:
         s=args
-        for i in range(len(s)):
+        for i in range(10000000000000000):
             if i not in s:
                 return i
     """
