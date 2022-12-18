@@ -4,6 +4,7 @@ from typing import Any, Callable
 # BASE
 
 def useless_function():
+    return
     """
     Эта функция должна ничего не делать и ничего не возвращать
     Зачем она здесь?... Никто не знает :(
