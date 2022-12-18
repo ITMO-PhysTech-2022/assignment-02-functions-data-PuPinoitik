@@ -31,6 +31,12 @@ caesar_decode = lambda s, shift: ...
 # LISTS
 
 def extract_each(array: list, k: int, cyclic: bool = False):
+    a=[]
+    n=0
+    while n<len(array):
+        a.append(array[n])
+        n+=k
+    return a
     """
     Функция принимает массив array и число k, и возвращает массив, состоящий из
     каждого k-го элемента массива array
