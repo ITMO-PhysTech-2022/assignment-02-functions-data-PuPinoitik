@@ -34,6 +34,14 @@ def _print_segment(height: int,size: int):
 # RECURSION
 
 def generate_json(depth: int):
+    v = {"1": "nottouch", "2": "base", "3": "rrr"}
+    def dict_depth(d, depth):
+        if depth > 0:
+            v = {"1": "nottouch", "2": "base", "3": d}
+            return dict_depth(v, depth-1)
+        else:
+            return d
+    return(dict_depth(v, depth-1))
     """
     Функция генерирует словарь (dict) с уровнем вложенности depth
     """
@@ -41,6 +49,11 @@ def generate_json(depth: int):
 
 
 def wtf():
+    """
+    Функция wtf вызывает внутреннюю функцию _worker с некоторым аргументом
+    и должна возвращать число 42
+    """
+
     def _worker(x):
         if x == 0:
             return wtf()
@@ -50,7 +63,8 @@ def wtf():
             return _worker(x + 982 if x < 10000 else x - 2) + 1
         else:
             return 0
-    return _worker(255310974640195504821)
+
+    return _worker(3979609160264634694193)
 
 
 # ARGS, KWARGS
