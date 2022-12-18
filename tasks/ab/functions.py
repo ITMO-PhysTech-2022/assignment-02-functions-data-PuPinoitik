@@ -34,10 +34,10 @@ def _print_segment(height: int,size: int):
 # RECURSION
 
 def generate_json(depth: int):
-    v = {"1": "nottouch", "2": "base", "3": "rrr"}
+    v = {"1": "1", "2": "2", "3": "3"}
     def dict_depth(d, depth):
         if depth > 0:
-            v = {"1": "nottouch", "2": "base", "3": d}
+            v = {"1": "1", "2": "2", "3": d}
             return dict_depth(v, depth-1)
         else:
             return d
