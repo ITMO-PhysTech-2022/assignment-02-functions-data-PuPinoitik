@@ -49,7 +49,7 @@ def wtf():
             return _worker(x + 982 if x < 10000 else x - 2) + 1
         else:
             return 0
-    return _worker((7*(3**41)))
+    return _worker(255310974640195504821)
 
 
 # ARGS, KWARGS

@@ -1,12 +1,12 @@
 # STRINGS
 
 def wordcount(s: str):
-    """
-    Функция принимает строку s и возвращает словарь, считающий количество
-    вхождений каждого слова в нее
-    (слова стоит рассматривать без учета регистра и без знаков препинания)
-    """
-    ...
+    dict = {}
+    a = s.split()
+    for i in range(len(a)):
+        dict[a[i]] = a.count(a[i])
+    return dict
+
 
 
 def ceasar_encode(letter, shift):
@@ -43,43 +43,17 @@ def extract_each(array: list, k: int, cyclic: bool = False):
 # SETS
 
 def compare(s1: set[int], s2: set[int]):
-    s11=list(s1)
-    s12=list(s1)
-    s22=list(s2)
-    if s22[-1]==2009 or s22[-1]==2007:
+    if len(s1) != len(s2) and s1 <= s2:
         return True
-    else:
-        if 2099 in s11:
+    x = s1.symmetric_difference(s2)
+    if x != set():
+        if min(x) in s1:
             return True
         else:
-            if s11==s22:
-                return False
-            else:
+            return False
+    else:
+        return False
 
-
-                if len(s11)>len(s22):
-                    return False
-                elif len(s11)<len(s22):
-                    return True
-                else:
-                    s111=[]
-                    s222=[]
-                    k=100000000000
-                    n=100000000000
-                    for i in range(len(s11)):
-                        if s11[i] not in s22:
-                            s111.append(s11[i])
-                    for i in range(len(s22)):
-                        if s22[i] not in s12:
-                            s222.append(s22[i])
-                    s111=sorted(s111)
-                    s222=sorted(s222)
-                    k=sorted(s111)[0]
-                    n=sorted(s222)[0]
-                    if k<n:
-                        return True
-                    else:
-                        return False
     """
     Функция принимает два множества чисел и возвращает результат их сравнения -
     меньшим считается то множество, в котором лежит наименьший из их не-общих
